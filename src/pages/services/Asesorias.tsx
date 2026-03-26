@@ -30,6 +30,7 @@ export default function Asesorias() {
       content: (
         <div className="w-full bg-white p-8 md:p-12 rounded-3xl shadow-xl border border-neutral-100 hover:shadow-2xl transition-all">
           <h2 className="text-3xl font-bold mb-8 text-brand-dark">Diagnóstico Integral</h2>
+          <p className="text-xl text-neutral-500 font-semibold mb-8 -mt-6">Identificamos oportunidades y áreas críticas</p>
           
           {/* Flowchart Visual */}
           <div className="relative mb-10 bg-neutral-50 p-6 md:p-8 rounded-2xl border border-neutral-200 overflow-hidden">
@@ -51,7 +52,7 @@ export default function Asesorias() {
               </motion.div>
 
               <motion.div variants={itemVariants} className="px-6 py-3 bg-white border-2 border-brand-dark rounded-xl font-bold text-brand-dark shadow-sm hover:bg-brand-dark hover:text-white transition-colors cursor-default">
-                PC
+                Precría
               </motion.div>
 
               <motion.div variants={itemVariants} className="flex flex-col items-center">
@@ -82,16 +83,6 @@ export default function Asesorias() {
               </motion.div>
             </motion.div>
 
-            {/* Feedback Arrow Indicator */}
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1.5, duration: 1 }}
-              className="mt-12 text-center text-brand-accent font-bold flex items-center justify-center gap-2 border-t-2 border-dashed border-brand-accent/50 pt-4"
-            >
-              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
-              Feedback Resultados
-            </motion.div>
           </div>
 
           {/* Tools List */}
@@ -114,9 +105,6 @@ export default function Asesorias() {
               </motion.li>
               <motion.li variants={itemVariants} className="flex items-center gap-3">
                 <div className="w-2 h-2 rounded-full bg-brand-primary shadow-[0_0_8px_rgba(20,184,166,0.5)]" /> Matrices EFE - EFI
-              </motion.li>
-              <motion.li variants={itemVariants} className="flex items-center gap-3">
-                <div className="w-2 h-2 rounded-full bg-brand-primary shadow-[0_0_8px_rgba(20,184,166,0.5)]" /> Twinn Witness (Software)
               </motion.li>
             </motion.ul>
           </div>
@@ -167,8 +155,8 @@ export default function Asesorias() {
               <svg className="w-8 h-8 md:w-10 md:h-10 shrink-0 text-brand-accent stroke-[3]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18" /></svg>
             </motion.div>
             
-            <div className="max-w-sm text-center md:text-left text-brand-dark font-medium italic text-lg md:text-xl bg-brand-light p-6 rounded-2xl border-2 border-neutral-200 shadow-sm relative">
-              Ejemplo de tasas de Mortalidad causadas por problemas del proceso de Transferencia
+            <div className="max-w-md text-center md:text-left text-brand-dark font-medium italic text-lg md:text-xl bg-brand-light p-6 rounded-2xl border-2 border-neutral-200 shadow-sm relative">
+              Se identificaron mortalidades superiores al 15% durante el proceso de transferencia desde Precría a Piscinas de Engorde
               {/* Line pointing up left */}
               <div className="hidden md:block absolute -top-10 -left-10 w-16 h-16 border-l-2 border-t-2 border-dashed border-neutral-300 rounded-tl-3xl"></div>
             </div>
@@ -182,15 +170,15 @@ export default function Asesorias() {
               viewport={{ once: true }}
               className="flex flex-col items-center justify-center"
             >
-              <div className="relative border-2 border-brand-accent rounded-[3rem] p-8 md:p-12 w-full max-w-sm flex flex-col items-center text-center hover:bg-brand-accent/5 transition-colors">
-                <div className="absolute -top-6 -left-6 transform rotate-45">
-                  <svg className="w-16 h-16 text-brand-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>
+              <div className="relative border-2 border-brand-accent rounded-[3rem] p-8 md:p-12 w-full max-w-md flex flex-col items-center text-center hover:bg-brand-accent/5 transition-colors">
+                <div className="absolute -top-10 left-1/2 -translate-x-1/2">
+                  <svg className="w-16 h-16 text-brand-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 14l-7 7m0 0l-7-7m7 7V3" /></svg>
                 </div>
                 <h3 className="font-bold text-3xl text-brand-accent mb-8">Soluciones<br/>Propuestas</h3>
-                <ul className="text-2xl font-bold text-brand-primary/80 text-left w-full pl-8 space-y-4 font-mono">
-                  <motion.li whileHover={{ x: 10 }} className="cursor-pointer transition-transform">- A</motion.li>
-                  <motion.li whileHover={{ x: 10 }} className="cursor-pointer transition-transform">- B</motion.li>
-                  <motion.li whileHover={{ x: 10 }} className="cursor-pointer transition-transform">- C</motion.li>
+                <ul className="text-xl font-bold text-brand-primary/80 text-left w-full pl-6 space-y-4 font-mono">
+                  <motion.li whileHover={{ x: 10 }} className="cursor-pointer transition-transform">- Buscar pesos de transferencia entre 0.5 a 0.8 g</motion.li>
+                  <motion.li whileHover={{ x: 10 }} className="cursor-pointer transition-transform">- Verificar ciclo de muda previo a Transferencia</motion.li>
+                  <motion.li whileHover={{ x: 10 }} className="cursor-pointer transition-transform">- Reducir velocidad de caudal e inyectar oxígeno cada 400 m en tubería de transferencia</motion.li>
                 </ul>
               </div>
             </motion.div>
@@ -200,21 +188,21 @@ export default function Asesorias() {
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="flex flex-col items-center justify-center md:items-start md:justify-end gap-6 pl-4"
+              className="flex flex-col items-stretch justify-center gap-6 pl-4"
             >
-              <h3 className="font-bold text-3xl text-brand-accent w-full text-center md:text-left">Resultados</h3>
+              <h3 className="font-bold text-3xl text-brand-accent w-full text-center">Resultados</h3>
               <div className="flex flex-col sm:flex-row items-center gap-4 w-full">
                 <motion.div 
                   whileHover={{ scale: 1.05 }}
-                  className="bg-white border-4 border-brand-primary/30 text-brand-primary px-8 py-5 rounded-xl font-bold text-2xl shadow-sm text-center flex-1 cursor-default"
+                  className="bg-white border-4 border-brand-primary/30 text-brand-primary px-8 py-5 rounded-xl font-bold text-xl shadow-sm text-center flex-1 cursor-default"
                 >
-                  + X% Sob
+                  68 al 84% de Sobrevivencia
                 </motion.div>
                 <motion.div 
                   whileHover={{ scale: 1.05 }}
-                  className="bg-white border-4 border-brand-primary/30 text-brand-primary px-8 py-5 rounded-xl font-bold text-2xl shadow-sm text-center flex-1 cursor-default"
+                  className="bg-white border-4 border-brand-primary/30 text-brand-primary px-8 py-5 rounded-xl font-bold text-xl shadow-sm text-center flex-1 cursor-default"
                 >
-                  - X% Tasa M.
+                  Tasa mortalidad diaria &lt;1%
                 </motion.div>
               </div>
             </motion.div>
@@ -239,9 +227,7 @@ export default function Asesorias() {
             animate={{ opacity: 1, scale: 1 }}
             className="mb-24 text-center"
           >
-            <span className="inline-block px-5 py-2.5 bg-brand-primary/10 text-brand-primary font-black text-[10px] tracking-[0.3em] uppercase rounded-full mb-8">
-               Field Consulting & Auditing
-            </span>
+
             <h1 className="text-6xl md:text-8xl font-black text-brand-dark tracking-tighter mb-8 leading-none">
               Asesorías <br className="hidden md:block"/>
               <span className="text-brand-primary">de Campo</span>

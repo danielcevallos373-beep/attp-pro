@@ -51,21 +51,21 @@ export default function AnalisisDatos() {
 
   const images = [
     { src: Fig44, title: "Análisis de Variables por Sector" },
-    { src: Fig45, title: "Distribución por Época de Cultivo" },
-    { src: Fig46, title: "Dashboard de Producción Integrado" },
-    { src: Fig49, title: "Prueba de ANOVA Tukey" },
-    { src: Fig411, title: "Pruebas de KS y Levene" },
+    { src: Fig45, title: "Distribución por Sistema de Producción" },
+    { src: Fig46, title: "Distribución por Época de Cultivo" },
+    { src: Fig49, title: "Análisis de Correlación entre variables" },
+    { src: Fig411, title: "Pruebas de Normalidad y Homogeneidad" },
   ];
 
   const correlationImages = [
     { src: AnalisisGenAmb, title: "Análisis Genética vs Ambiente" },
-    { src: BiplotCanonico, title: "Biplot Canónico de Correlaciones" },
+    { src: BiplotCanonico, title: "Correlación entre Sectores según su infraestructura y variables climáticas" },
     { src: PesoCrecimiento, title: "Relación Peso Siembra vs Crecimiento" },
     { src: SistemaBifasico, title: "Sistema Bifásico - KPIs Operativos" },
     { src: FotoAireadores, title: "Infraestructura: Aireadores" },
     { src: FotoAlimentadores, title: "Infraestructura: Alimentadores" },
-    { src: FotoCombinada2, title: "Vista Aérea Combinada" },
-    { src: FotoCombinadaAA, title: "Vista Aérea AA y Aireadores" },
+    { src: FotoCombinada2, title: "Disposición de Aireadores" },
+    { src: FotoCombinadaAA, title: "Alimentadores Automáticos" },
   ];
 
   const forecastImages = [
@@ -82,11 +82,14 @@ export default function AnalisisDatos() {
 
   const tabsContent = [
     {
-      title: "Comprender Producción",
+      title: "Análisis Productivo",
       value: "comprender",
       content: (
         <div className="w-full bg-white p-8 md:p-12 rounded-3xl shadow-xl border border-neutral-100">
-          <h2 className="text-4xl font-bold mb-10 text-brand-dark">Comprender Producción y KPI's</h2>
+          <h2 className="text-4xl font-bold mb-4 text-brand-dark">Análisis Productivo</h2>
+          <p className="text-xl text-neutral-500 font-medium mb-10 max-w-4xl italic">
+            "Descubre el verdadero potencial de tu finca. Un análisis de producción preciso separa los mitos de la realidad, para que inviertas tus recursos solo en lo que realmente funciona"
+          </p>
           <motion.div 
             variants={containerVariants}
             initial="hidden"
@@ -117,37 +120,67 @@ export default function AnalisisDatos() {
               </motion.div>
             ))}
           </motion.div>
+          
+          <div className="mt-16 flex justify-center">
+            <a 
+              href="/contacto?subject=Solicitud de auditoría de datos"
+              className="px-10 py-5 bg-brand-primary text-white font-bold text-xl rounded-2xl shadow-xl hover:bg-brand-dark transition-all transform hover:scale-105 active:scale-95 flex items-center gap-3"
+            >
+              Solicitar una auditoría de datos
+              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+            </a>
+          </div>
         </div>
       ),
     },
     {
-      title: "Diseñar KPI's y OKR's",
+      title: "KPI's y OKR's",
       value: "disenar",
       content: (
         <div className="w-full bg-white p-8 md:p-12 rounded-3xl shadow-xl border border-neutral-100">
-          <h2 className="text-4xl font-bold mb-10 text-brand-dark">Diseñar KPI's y OKR's</h2>
+          <h2 className="text-4xl font-bold mb-6 text-brand-dark">KPI's y OKR's</h2>
+          
+          <div className="mb-12 space-y-4">
+            <h3 className="text-2xl font-black text-brand-primary tracking-tight">La Fórmula del Liderazgo Acuícola</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="p-6 bg-brand-light rounded-2xl border-l-4 border-brand-primary shadow-sm">
+                <p className="text-lg leading-relaxed text-neutral-700">
+                  <span className="text-2xl mr-2">📊</span>
+                  <strong className="text-brand-dark">KPIs - Tablero de Control:</strong> Miden la salud diaria de la finca (Crecimiento, FCRe, Oxígeno, Supervivencia, etc). Te mantienen estable y evitan crisis.
+                </p>
+              </div>
+              <div className="p-6 bg-brand-light rounded-2xl border-l-4 border-brand-accent shadow-sm">
+                <p className="text-lg leading-relaxed text-neutral-700">
+                  <span className="text-2xl mr-2">🚀</span>
+                  <strong className="text-brand-dark">OKRs - GPS Estratégico:</strong> Trazan tu ruta de crecimiento. Transforman metas ambiciosas en resultados medibles a corto plazo.
+                </p>
+              </div>
+            </div>
+          </div>
           
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
               <thead>
                 <tr className="border-b-2 border-brand-primary/20">
-                  <th className="py-4 px-4 text-2xl font-bold text-brand-dark">Etapa</th>
-                  <th className="py-4 px-4 text-2xl font-bold text-brand-primary">KPI</th>
-                  <th className="py-4 px-4 text-2xl font-bold text-brand-accent">OKR</th>
+                  <th className="py-4 px-4 text-xl font-bold text-brand-dark">Etapa</th>
+                  <th className="py-4 px-4 text-xl font-bold text-brand-primary">KPI</th>
+                  <th className="py-4 px-4 text-xl font-bold text-brand-accent">OKR</th>
+                  <th className="py-4 px-4 text-xl font-bold text-brand-dark bg-brand-primary/5 rounded-t-xl">Nuestro Enfoque</th>
                 </tr>
               </thead>
               <tbody className="text-xl">
                 {[
-                  { stage: "[Larva]", kpi: "Costo / Millar / PL", okr: "ROA" },
-                  { stage: "[PC]", kpi: "Costo / Millar / Peso Transf.", okr: "# chequeos semanales" },
-                  { stage: "[Eng]", kpi: "Costo / Lb / Talla Cosecha", okr: "Tasa mort semanal" },
-                  { stage: "[Cos]", kpi: "Lb / Obrero / Comp / Hora", okr: "Tº prom proceso, [] Metabisulfito" },
-                  { stage: "[Proc]", kpi: "Lb / Obrero / Turno / Hora Ent y PyP", okr: "% Eficiencia Finca origen y Talla" },
+                  { stage: "[Larva]", kpi: "Costo / Millar / PL", okr: "ROA", enfoque: "Será siempre una mejor inversión pagar por animales con mejor desarrollo y desempeño" },
+                  { stage: "[PC]", kpi: "Costo / Millar / Peso Transf.", okr: "# chequeos semanales", enfoque: "El costo del juvenil debe venir asociado al Peso alcanzado al momento de la transferencia. Un animal de mayor tamaño no necesariamente tiene mejor desempeño en engorde." },
+                  { stage: "[Eng]", kpi: "Costo / Lb / Talla Cosecha", okr: "Tasa mort semanal", enfoque: "El costo por libra debe venir acompañado del peso final alcanzado, no es lo mismo alcanzar un costo de $1.45 por libra a los 18 gramos, que a los 28 gramos." },
+                  { stage: "[Cos]", kpi: "Lb / Obrero / Comp / Hora", okr: "Tº prom proceso, [] Metabisulfito", enfoque: "Con estructuras de costo tan desafiantes, es necesario incorporar medidas de eficiencia que nos den claridad de nuestras operaciones cotidianas y cómo optimizarlas. Por ejemplo, cuántas libras se obtiene por cada obrero colocado en cada compuerta de cosecha, por hora; y cuál ha sido la temperatura promedio en las tinas, como su concentración de metabisulfito de sodio." },
+                  { stage: "[Proc]", kpi: "Lb / Obrero / Turno / Hora Ent y PyP", okr: "% Eficiencia Finca origen y Talla", enfoque: "Un viejo adagio dice: En la puerta del horno se quema el pan. Saber el rendimiento de empaque por Finca, Piscina y Talla hará una gran diferencia en la rentabilidad de la operación, y lo más importante, nos permitirá identificar y corregir errores." },
                 ].map((row, idx) => (
                   <tr key={idx} className="border-b border-neutral-100 hover:bg-brand-light transition-colors group">
-                    <td className="py-6 px-4 font-bold text-brand-dark group-hover:text-brand-primary transition-colors">{row.stage}</td>
-                    <td className="py-6 px-4 font-medium text-neutral-700">{row.kpi}</td>
-                    <td className="py-6 px-4 font-bold text-brand-accent/80 italic">{row.okr}</td>
+                    <td className="py-6 px-4 font-bold text-brand-dark group-hover:text-brand-primary transition-colors whitespace-nowrap">{row.stage}</td>
+                    <td className="py-6 px-4 font-medium text-neutral-700 min-w-[200px]">{row.kpi}</td>
+                    <td className="py-6 px-4 font-bold text-brand-accent/80 italic min-w-[150px]">{row.okr}</td>
+                    <td className="py-6 px-6 text-sm font-medium text-neutral-600 bg-brand-primary/[0.02] border-l border-brand-primary/10 italic leading-relaxed">{row.enfoque}</td>
                   </tr>
                 ))}
               </tbody>
@@ -170,7 +203,21 @@ export default function AnalisisDatos() {
       value: "correlacionar",
       content: (
         <div className="w-full bg-white p-8 md:p-12 rounded-3xl shadow-xl border border-neutral-100">
-          <h2 className="text-4xl font-bold mb-10 text-brand-dark">Correlacionar y Modelar</h2>
+          <h2 className="text-4xl font-bold mb-8 text-brand-dark">Correlacionar y Modelar</h2>
+          
+          <div className="mb-12 border-l-4 border-brand-accent pl-8 py-4">
+            <h3 className="text-3xl font-black text-brand-dark mb-6 tracking-tight">El Motor de tu Rentabilidad</h3>
+            <div className="space-y-6">
+              <p className="text-xl leading-relaxed text-neutral-600">
+                <strong className="text-brand-accent uppercase tracking-wider text-sm block mb-1">🔍 Correlacionar - Descubre el Porqué:</strong>
+                Cruza miles de datos (oxígeno, temperatura, alimento, FCR) para identificar patrones invisibles al ojo humano. Es pasar de las suposiciones a las certezas técnicas.
+              </p>
+              <p className="text-xl leading-relaxed text-neutral-600">
+                <strong className="text-brand-accent uppercase tracking-wider text-sm block mb-1">📈 Modelar - Predice el Futuro:</strong>
+                Crea un "gemelo digital" de tu piscina. Simula escenarios de alimentación, pronostica tu biomasa exacta y anticípate a las caídas de calidad de agua, oxígeno, etc.
+              </p>
+            </div>
+          </div>
           <motion.div 
             variants={containerVariants}
             initial="hidden"
@@ -209,7 +256,10 @@ export default function AnalisisDatos() {
       value: "pronosticos",
       content: (
         <div className="w-full bg-white p-8 md:p-12 rounded-3xl shadow-xl border border-neutral-100">
-          <h2 className="text-4xl font-bold mb-10 text-brand-dark">Pronósticos</h2>
+          <h2 className="text-4xl font-bold mb-6 text-brand-dark">Pronósticos</h2>
+          <p className="text-xl text-neutral-500 font-semibold mb-12 max-w-5xl border-b border-neutral-100 pb-8 italic">
+            "El éxito acuícola no sólo depende de lo que ocurre dentro de tu piscina, sino de tu capacidad para prever choques climáticos y fluctuaciones del mercado internacional. Con nuestros modelos matemáticos, dejas de operar a ciegas y comienzas a planificar tu cosecha con precisión técnica"
+          </p>
           
           <div className="space-y-16">
             {/* Gallery Section */}
@@ -273,13 +323,11 @@ export default function AnalisisDatos() {
                     </div>
 
                     <a 
-                      href={doc.file} 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="inline-flex w-full items-center justify-center gap-2 text-white bg-brand-primary font-bold hover:bg-brand-dark transition-colors px-4 py-3 rounded-xl mt-auto shadow-md"
+                      href={`/contacto?subject=Solicitud de Reporte: ${doc.title}`}
+                      className="inline-flex w-full items-center justify-center gap-2 text-white bg-brand-dark font-bold hover:bg-brand-primary transition-colors px-4 py-3 rounded-xl mt-auto shadow-md"
                     >
-                      Descargar Reporte PDF
-                      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+                      Solicitar Reporte Completo
+                      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
                     </a>
                   </div>
                 ))}
