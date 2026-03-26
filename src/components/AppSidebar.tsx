@@ -1,13 +1,13 @@
 import { Sidebar, SidebarBody, SidebarLink } from "./ui/sidebar";
 import {
-  IconLeaf,
-  IconChartBar,
-  IconServer,
-  IconSchool,
-  IconTrendingUp,
-  IconBox,
-  IconHome,
-} from "@tabler/icons-react";
+  Sprout,
+  BarChart2,
+  Server,
+  GraduationCap,
+  TrendingUp,
+  Package,
+  Home,
+} from "lucide-react";
 import { motion } from "motion/react";
 import shrimplicityLogo from "../assets/images/LogoShrimplicitySinFondo.png";
 import logoImg from "../assets/images/Logo1.jpg";
@@ -22,32 +22,32 @@ export function AppSidebar({ open, setOpen }: AppSidebarProps) {
     {
       label: "Asesorías de Campo",
       href: "/asesorias",
-      icon: <IconLeaf className="h-5 w-5 shrink-0 text-brand-primary" />,
+      icon: <Sprout className="h-5 w-5 shrink-0 text-brand-primary" />,
     },
     {
       label: "Análisis de Datos",
       href: "/analisis-datos",
-      icon: <IconChartBar className="h-5 w-5 shrink-0 text-brand-primary" />,
+      icon: <BarChart2 className="h-5 w-5 shrink-0 text-brand-primary" />,
     },
     {
       label: "Infraestructura Digital",
       href: "/infraestructura",
-      icon: <IconServer className="h-5 w-5 shrink-0 text-brand-primary" />,
+      icon: <Server className="h-5 w-5 shrink-0 text-brand-primary" />,
     },
     {
       label: "Capacitaciones Especializadas",
       href: "/capacitaciones",
-      icon: <IconSchool className="h-5 w-5 shrink-0 text-brand-primary" />,
+      icon: <GraduationCap className="h-5 w-5 shrink-0 text-brand-primary" />,
     },
     {
       label: "Benchmarking",
       href: "/benchmarking",
-      icon: <IconTrendingUp className="h-5 w-5 shrink-0 text-brand-primary" />,
+      icon: <TrendingUp className="h-5 w-5 shrink-0 text-brand-primary" />,
     },
     {
       label: "Productos",
       href: "/productos",
-      icon: <IconBox className="h-5 w-5 shrink-0 text-brand-primary" />,
+      icon: <Package className="h-5 w-5 shrink-0 text-brand-primary" />,
     },
     {
       label: "Shrimplicity",
@@ -97,7 +97,7 @@ export const Logo = () => {
       href="/"
       className="relative z-20 flex items-center space-x-2 py-1 font-normal text-black"
     >
-      <IconHome className="h-5 w-5 shrink-0 text-brand-primary" />
+      <Home className="h-5 w-5 shrink-0 text-brand-primary" />
       <motion.span
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

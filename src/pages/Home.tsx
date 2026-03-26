@@ -5,7 +5,6 @@ import bgImage from "../assets/images/Panora\u0301micaAvioneta.jpg";
 import landingImg from "../assets/images/LandingPage.jpg";
 import inspiracionalVideo from "../assets/videos/video-inspiracional.mp4";
 import { Spotlight } from "../components/ui/spotlight";
-import { TextGenerateEffect } from "../components/ui/text-generate-effect";
 import { Highlight } from "../components/ui/hero-highlight";
 import { motion } from "motion/react";
 import { Mail, Phone, Clock, Twitter, Linkedin, Github, Facebook, Instagram } from "lucide-react";
@@ -49,19 +48,13 @@ export default function Home() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-            className="text-6xl md:text-8xl lg:text-9xl text-white font-extralight text-center leading-none tracking-tight"
+            className="text-5xl md:text-7xl lg:text-8xl text-white font-extralight text-center leading-none tracking-tight"
           >
             REVOLUCIONA<br />
             <span className="font-bold drop-shadow-md">LA ACUICULTURA</span>
           </motion.h1>
 
-          {/* TextGenerateEffect — subtitle in hero */}
-          <TextGenerateEffect
-            words="Ciencia, tecnología y comunidad para la producción de camarón en América Latina."
-            className="text-brand-light/90 text-center text-lg md:text-xl max-w-2xl leading-relaxed font-normal"
-            duration={0.35}
-            filter={false}
-          />
+
         </div>
       </header>
 
@@ -75,18 +68,25 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/60 to-transparent" />
 
         <div className="relative z-10 w-full max-w-7xl mx-auto h-full flex flex-col justify-center px-6 md:px-16">
-          <div className="max-w-2xl flex flex-col gap-4">
+          <div className="max-w-4xl flex flex-col gap-8">
             <FadeUp>
-              <h2 className="text-3xl md:text-5xl lg:text-6xl font-semibold text-white leading-[1.1] tracking-tight">
+              <h2 className="text-3xl md:text-5xl lg:text-6xl font-semibold text-white leading-tight tracking-tight">
                 Revoluciona la producción de camarón en América Latina,
               </h2>
             </FadeUp>
             <FadeUp delay={0.15}>
-              <h2 className="text-3xl md:text-5xl lg:text-6xl font-semibold leading-[1.15] tracking-tight">
-                <Highlight>
-                  integrando ciencia, tecnología y comunidad
-                </Highlight>
-              </h2>
+              <div className="flex flex-col gap-6">
+                <h2 className="text-3xl md:text-5xl lg:text-6xl font-semibold leading-tight tracking-tight">
+                  <Highlight>
+                    integrando ciencia,
+                  </Highlight>
+                </h2>
+                <h2 className="text-3xl md:text-5xl lg:text-6xl font-semibold leading-tight tracking-tight">
+                  <Highlight>
+                    tecnología y comunidad
+                  </Highlight>
+                </h2>
+              </div>
             </FadeUp>
           </div>
         </div>
@@ -127,7 +127,7 @@ export default function Home() {
           {/* Brand */}
           <div className="flex flex-col items-center gap-1">
             <p className="text-2xl font-bold tracking-tight">AT&TP</p>
-            <p className="text-neutral-500 text-sm">Innovación en Acuicultura para América Latina.</p>
+            <p className="text-[10px] uppercase tracking-[0.2em] text-neutral-400 font-bold mb-1">Asesoría Técnica y Tecnologías de Producción</p>
           </div>
 
           {/* Contact Info — 3 cols centered */}

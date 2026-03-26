@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useRef, useEffect } from "react";
-import { IconLoader2, IconMaximize, IconMinimize, IconChevronLeft, IconChevronRight, IconX } from "@tabler/icons-react";
+import { Loader2, Maximize, Minimize, ArrowLeft, ArrowRight, X } from "lucide-react";
 import { Document, Page, pdfjs } from "react-pdf";
 import { motion, AnimatePresence } from "motion/react";
 import { createPortal } from "react-dom";
@@ -17,12 +17,16 @@ interface CarouselControlProps {
 const CarouselControl = ({ type, title, handleClick, disabled }: CarouselControlProps) => {
   return (
     <button
-      className={`w-10 h-10 md:w-12 md:h-12 flex items-center justify-center bg-brand-dark/90 backdrop-blur-xl border border-brand-primary/50 text-brand-primary rounded-full hover:border-brand-primary hover:bg-brand-primary hover:text-white transition-all duration-300 relative z-50 shadow-xl focus:outline-none focus:ring-2 focus:ring-brand-primary/50 disabled:opacity-30 disabled:cursor-not-allowed`}
+      className={`w-14 h-14 md:w-16 md:h-16 flex items-center justify-center bg-brand-dark/95 backdrop-blur-2xl border-2 border-brand-primary text-brand-primary rounded-full hover:bg-brand-primary hover:text-white transition-all duration-300 relative z-50 shadow-[0_0_20px_rgba(20,184,166,0.3)] hover:shadow-[0_0_30px_rgba(20,184,166,0.6)] focus:outline-none focus:ring-4 focus:ring-brand-primary/40 disabled:opacity-20 disabled:cursor-not-allowed group`}
       title={title}
       onClick={handleClick}
       disabled={disabled}
     >
-      {type === "previous" ? <IconChevronLeft className="w-6 h-6" stroke={3} /> : <IconChevronRight className="w-6 h-6" stroke={3} />}
+      {type === "previous" ? (
+        <ArrowLeft className="w-8 h-8 md:w-10 md:h-10 transition-transform group-hover:-translate-x-1" strokeWidth={3} />
+      ) : (
+        <ArrowRight className="w-8 h-8 md:w-10 md:h-10 transition-transform group-hover:translate-x-1" strokeWidth={3} />
+      )}
     </button>
   );
 };
@@ -118,7 +122,7 @@ export function PdfCarousel({ pdfFile, titlePrefix = "Página", onPageClick }: P
             onLoadSuccess={index === 0 ? handlePageLoadSuccess : undefined}
             loading={
               <div className="w-full h-40 bg-neutral-900 flex items-center justify-center">
-                <IconLoader2 className="w-8 h-8 animate-spin text-brand-primary/50" />
+                <Loader2 className="w-8 h-8 animate-spin text-brand-primary/50" />
               </div>
             }
           />
@@ -131,7 +135,7 @@ export function PdfCarousel({ pdfFile, titlePrefix = "Página", onPageClick }: P
              }}
           >
              <div className="bg-white/95 text-brand-dark px-6 py-3 rounded-2xl font-black text-xs uppercase tracking-widest flex items-center gap-2 transform translate-y-4 group-hover/page:translate-y-0 transition-transform">
-               <IconMaximize className="w-4 h-4" />
+               <Maximize className="w-4 h-4" />
                Ampliar Documento
              </div>
           </div>
@@ -155,7 +159,7 @@ export function PdfCarousel({ pdfFile, titlePrefix = "Página", onPageClick }: P
         onLoadSuccess={({ numPages }) => setNumPages(numPages)}
         loading={
           <div className="flex flex-col items-center justify-center w-full max-w-[500px] aspect-[1/1.2] bg-neutral-900/50 rounded-[2rem] border border-white/5 animate-pulse">
-             <IconLoader2 className="w-10 h-10 animate-spin text-brand-primary opacity-50 mb-4" />
+             <Loader2 className="w-10 h-10 animate-spin text-brand-primary opacity-50 mb-4" />
              <p className="text-white/30 font-bold uppercase tracking-[0.2em] text-[10px]">Cargando Documento...</p>
           </div>
         }
@@ -237,7 +241,7 @@ export function PdfCarousel({ pdfFile, titlePrefix = "Página", onPageClick }: P
                       onClick={closeExpandedView}
                       className="w-12 h-12 bg-neutral-800 text-white rounded-full flex items-center justify-center hover:scale-110 active:scale-90 hover:bg-red-500 transition-all shadow-xl"
                     >
-                      <IconX size={24} stroke={3} />
+                      <X size={24} strokeWidth={3} />
                     </button>
                   </div>
                 </div>
@@ -259,7 +263,7 @@ export function PdfCarousel({ pdfFile, titlePrefix = "Página", onPageClick }: P
                            scale={zoomLevel}
                            width={typeof window !== 'undefined' ? (isLandscape ? Math.min(window.innerWidth * 0.85, 1600) : Math.min(window.innerWidth * 0.9, 1200)) : undefined}
                            className={`shadow-[0_0_100px_rgba(0,0,0,0.8)] rounded-xl overflow-hidden bg-white ${zoomLevel === 1 ? '[&>.react-pdf__Page__canvas]:!w-full [&>.react-pdf__Page__canvas]:!h-auto' : ''}`}
-                           loading={<IconLoader2 className="animate-spin text-brand-primary" size={40} />}
+                           loading={<Loader2 className="animate-spin text-brand-primary" size={40} />}
                          />
                      </div>
                    </div>
@@ -270,7 +274,7 @@ export function PdfCarousel({ pdfFile, titlePrefix = "Página", onPageClick }: P
                 </div>
 
                 <div className="mt-8 hidden md:flex items-center gap-3 bg-white/5 border border-white/10 px-6 py-3 rounded-full">
-                   <IconMinimize className="text-brand-primary w-4 h-4" />
+                   <Minimize className="text-brand-primary w-4 h-4" />
                    <p className="text-[10px] font-black text-white/50 uppercase tracking-[0.2em]">Haz clic en la página para acercar. Haz clic en la X para cerrar</p>
                 </div>
                 </div>

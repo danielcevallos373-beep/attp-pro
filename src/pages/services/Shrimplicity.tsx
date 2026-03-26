@@ -103,17 +103,7 @@ export default function Shrimplicity() {
   const [statsVisible, setStatsVisible] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
   const statsRef = useRef<HTMLDivElement>(null);
-  const [hasStarted, setHasStarted] = useState(false);
   const heroVideoRef = useRef<HTMLVideoElement>(null);
-
-  const startVideoUrl = () => {
-    if (heroVideoRef.current) {
-      heroVideoRef.current.muted = false;
-      heroVideoRef.current.play().catch(console.error);
-      setHasStarted(true);
-      setIsMuted(false);
-    }
-  };
 
   const toggleMute = () => {
     if (heroVideoRef.current) {
@@ -121,6 +111,13 @@ export default function Shrimplicity() {
       setIsMuted(heroVideoRef.current.muted);
     }
   };
+
+  // Attempt to autoplay on mount to ensure it plays (browsers require it to be muted for autoplay to work without interaction)
+  useEffect(() => {
+    if (heroVideoRef.current) {
+      heroVideoRef.current.play().catch(console.error);
+    }
+  }, []);
 
   // Trigger counter animation when stats section enters viewport
   useEffect(() => {
@@ -170,84 +167,45 @@ export default function Shrimplicity() {
               src={videoAtentoPepe}
               loop
               playsInline
+              autoPlay
+              muted
               className="w-full h-full object-cover"
               style={{ minHeight: "60vh", maxHeight: "85vh" }}
             />
             {/* Dark overlay */}
-            <div className={`absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20 pointer-events-none transition-opacity duration-1000 ${hasStarted ? 'opacity-50' : 'opacity-100'}`} />
+            <div className={`absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20 pointer-events-none transition-opacity duration-1000 opacity-50`} />
 
-            {/* Initial Play Overlay - like YouTube */}
-            {!hasStarted && (
-              <div 
-                className="absolute inset-0 z-30 flex items-center justify-center cursor-pointer group"
-                onClick={startVideoUrl}
-              >
-                <div className="absolute inset-0 bg-black/20 backdrop-blur-[2px] group-hover:bg-black/10 transition-colors duration-500" />
-                <motion.div 
-                  initial={{ scale: 0.9, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="relative z-10 w-24 h-24 md:w-32 md:h-32 bg-brand-primary/90 text-white rounded-full flex items-center justify-center shadow-[0_0_50px_rgba(57,119,87,0.5)] group-hover:shadow-[0_0_80px_rgba(57,119,87,0.8)] transition-all"
-                >
-                  <svg className="w-10 h-10 md:w-14 md:h-14 ml-2" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M8 5v14l11-7z" />
+            {/* Mute / Unmute Button (Always shows to allow manual audio control) */}
+            <motion.button
+              onClick={toggleMute}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              className="absolute top-5 left-5 z-20 flex items-center gap-2 bg-black/50 backdrop-blur-md border border-white/20 text-white px-4 py-2.5 rounded-full font-bold text-sm shadow-lg hover:bg-white/20 transition-all"
+              aria-label={isMuted ? "Activar sonido" : "Silenciar"}
+            >
+              {isMuted ? (
+                <>
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                      d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
                   </svg>
-                </motion.div>
-              </div>
-            )}
+                  <span>Activar sonido</span>
+                </>
+              ) : (
+                <>
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                      d="M15.536 8.464a5 5 0 010 7.072M12 6v12m-3.536-9.536a5 5 0 000 7.072M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+                  </svg>
+                  <span>Silenciar</span>
+                </>
+              )}
+            </motion.button>
 
-            {/* Mute / Unmute Button (Only shows after play starts) */}
-            {hasStarted && (
-              <motion.button
-                onClick={toggleMute}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                className="absolute top-5 right-5 z-20 flex items-center gap-2 bg-black/50 backdrop-blur-md border border-white/20 text-white px-4 py-2.5 rounded-full font-bold text-sm shadow-lg hover:bg-white/20 transition-all"
-                aria-label={isMuted ? "Activar sonido" : "Silenciar"}
-              >
-                {isMuted ? (
-                  <>
-                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                        d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
-                    </svg>
-                    <span>Activar sonido</span>
-                  </>
-                ) : (
-                  <>
-                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                        d="M15.536 8.464a5 5 0 010 7.072M12 6v12m-3.536-9.536a5 5 0 000 7.072M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
-                    </svg>
-                    <span>Silenciar</span>
-                  </>
-                )}
-              </motion.button>
-            )}
 
-            {/* Hero Text */}
-            <div className="absolute inset-0 flex flex-col items-center justify-end pb-16 px-6 text-center">
-              <motion.div
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-              >
-                <span className="inline-block px-5 py-2 bg-brand-accent/20 text-brand-accent font-black text-[10px] tracking-[0.35em] uppercase rounded-full mb-5 border border-brand-accent/30 backdrop-blur-sm">
-                  IA · Asistente Acuícola
-                </span>
-                <h1 className="text-5xl md:text-7xl font-black text-white tracking-tighter leading-none mb-4 drop-shadow-2xl">
-                  Conoce a<br />
-                  <span className="text-brand-accent">Atento Pepe</span>
-                </h1>
-                <p className="text-white/70 font-semibold text-lg md:text-xl max-w-xl mx-auto leading-relaxed">
-                  El asistente de inteligencia artificial que transforma la gestión camaronera.
-                </p>
-              </motion.div>
-            </div>
 
             {/* Scroll indicator */}
             <motion.div
@@ -263,6 +221,26 @@ export default function Shrimplicity() {
               >
                 <div className="w-1.5 h-1.5 rounded-full bg-white/60" />
               </motion.div>
+            </motion.div>
+          </section>
+
+          {/* Hero Text Relocated Below Video */}
+          <section className="bg-brand-dark pb-8 pt-10 px-6 text-center shadow-inner relative z-10 border-b border-white/5">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              <span className="inline-block px-5 py-2 bg-brand-accent/20 text-brand-accent font-black text-[10px] tracking-[0.35em] uppercase rounded-full mb-5 border border-brand-accent/30 backdrop-blur-sm">
+                IA · Asistente Acuícola
+              </span>
+              <h1 className="text-5xl md:text-7xl font-black text-white tracking-tighter leading-none mb-4 drop-shadow-2xl">
+                Conoce a<br />
+                <span className="text-brand-accent">Atento Pepe</span>
+              </h1>
+              <p className="text-white/70 font-semibold text-lg md:text-xl max-w-xl mx-auto leading-relaxed">
+                El asistente de inteligencia artificial que transforma la gestión camaronera.
+              </p>
             </motion.div>
           </section>
 
