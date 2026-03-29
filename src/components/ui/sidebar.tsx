@@ -54,7 +54,7 @@ export const Sidebar = ({
               animate={{ x: 0 }}
               exit={{ x: "-100%" }}
               transition={{ duration: 0.3, ease: "easeInOut" }}
-              className="fixed inset-y-0 left-0 z-[100] h-full flex flex-col w-[280px] bg-brand-light dark:bg-neutral-900 border-r border-neutral-200 dark:border-neutral-800 shadow-2xl"
+              className="fixed inset-y-0 left-0 z-[100] h-full flex flex-col w-[400px] bg-brand-light dark:bg-neutral-900 border-r border-neutral-200 dark:border-neutral-800 shadow-2xl"
             >
               {children}
             </motion.div>
