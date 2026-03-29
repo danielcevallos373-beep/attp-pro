@@ -1,11 +1,11 @@
 import { Sidebar, SidebarBody, SidebarLink } from "./ui/sidebar";
 import {
-  Sprout,
-  BarChart2,
-  Server,
-  GraduationCap,
-  TrendingUp,
-  Package,
+  TentTree,
+  BookSearch,
+  DatabaseZap,
+  Users,
+  ChartNoAxesCombined,
+  Briefcase,
   Home,
 } from "lucide-react";
 import { motion } from "motion/react";
@@ -22,37 +22,37 @@ export function AppSidebar({ open, setOpen }: AppSidebarProps) {
     {
       label: "Asesorías de Campo",
       href: "/asesorias",
-      icon: <Sprout className="h-5 w-5 shrink-0 text-brand-primary" />,
+      icon: <TentTree className="h-5 w-5 shrink-0 text-brand-primary" />,
     },
     {
       label: "Análisis de Datos",
       href: "/analisis-datos",
-      icon: <BarChart2 className="h-5 w-5 shrink-0 text-brand-primary" />,
+      icon: <BookSearch className="h-5 w-5 shrink-0 text-brand-primary" />,
     },
     {
       label: "Infraestructura Digital",
       href: "/infraestructura",
-      icon: <Server className="h-5 w-5 shrink-0 text-brand-primary" />,
+      icon: <DatabaseZap className="h-5 w-5 shrink-0 text-brand-primary" />,
     },
     {
       label: "Capacitaciones Especializadas",
       href: "/capacitaciones",
-      icon: <GraduationCap className="h-5 w-5 shrink-0 text-brand-primary" />,
+      icon: <Users className="h-5 w-5 shrink-0 text-brand-primary" />,
     },
     {
       label: "Benchmarking",
       href: "/benchmarking",
-      icon: <TrendingUp className="h-5 w-5 shrink-0 text-brand-primary" />,
+      icon: <ChartNoAxesCombined className="h-5 w-5 shrink-0 text-brand-primary" />,
     },
     {
       label: "Productos",
       href: "/productos",
-      icon: <Package className="h-5 w-5 shrink-0 text-brand-primary" />,
+      icon: <Briefcase className="h-5 w-5 shrink-0 text-brand-primary" />,
     },
     {
       label: "Shrimplicity",
       href: "/shrimplicity",
-      icon: <img src={shrimplicityLogo} alt="Shrimplicity" className="h-5 w-5 shrink-0 object-contain" />,
+      icon: <img src={shrimplicityLogo} alt="Shrimplicity" className="h-7 w-7 shrink-0 object-contain -ml-1 transition-transform group-hover/sidebar:scale-110" />,
       onClick: () => sessionStorage.setItem("shrimplicity_audio", "1"),
     },
   ];
