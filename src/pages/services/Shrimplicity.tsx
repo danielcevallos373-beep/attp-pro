@@ -11,6 +11,8 @@ import imgDatosCrudos from "../../assets/7. SHRIMPLICITY/De datos crudos a Decis
 import videoLanzamiento from "../../assets/7. SHRIMPLICITY/Lanzamiento Shrimplicity.mp4";
 import videoNuevaFuncionalidad from "../../assets/7. SHRIMPLICITY/Nueva Funcionalidad.mp4";
 import videoSuperado from "../../assets/7. SHRIMPLICITY/Superado las 1,000 ha.mp4";
+import imgPanoramica from "../../assets/images/PanorámicaCamaronera.jpg";
+import { FileDigit, LineChart, Bot, Network, Cpu, WifiOff } from "lucide-react";
 
 // ------- Animated Counter Hook -------
 function useCountUp(target: number, duration = 1800, start = false) {
@@ -160,7 +162,93 @@ export default function Shrimplicity() {
 
         <main className="flex-1">
 
-          {/* ── SECTION 1: HERO VIDEO — ATENTO PEPE ── */}
+          {/* ── SECTION 0: NUESTRA VISIÓN ── */}
+          <section className="w-full bg-[#0a140d] py-32 md:py-48 px-6 min-h-[110vh] flex flex-col justify-center overflow-hidden relative border-b border-white/5 shadow-2xl z-10">
+            {/* Background Image & Blend */}
+            <div 
+              className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat opacity-[0.35] pointer-events-none mix-blend-luminosity"
+              style={{ backgroundImage: `url(${imgPanoramica})` }}
+            />
+            {/* Dark green gradient map overlay to tint the image perfectly */}
+            <div className="absolute inset-0 w-full h-full pointer-events-none bg-gradient-to-br from-brand-dark/95 via-brand-dark/70 to-[#0a140d]/95 mix-blend-multiply" />
+            <div className="absolute inset-0 w-full h-full pointer-events-none bg-gradient-to-t from-brand-dark/30 via-transparent to-brand-dark/30" />
+            
+            <div className="max-w-7xl w-full mx-auto flex flex-col md:flex-row gap-20 md:gap-10 items-center justify-between relative z-10">
+              {/* Left Column */}
+              <motion.div
+                initial={{ opacity: 0, x: -40 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7 }}
+                className="w-full md:w-4/12 flex flex-col items-center md:items-start text-center md:text-left"
+              >
+                <div className="inline-block px-5 py-2.5 bg-brand-primary/10 text-brand-primary font-black text-[10px] tracking-[0.3em] uppercase rounded-full mb-6 border border-brand-primary/20">
+                  El Futuro de la Gestión
+                </div>
+                <h2 className="text-5xl md:text-6xl lg:text-7xl font-black text-white tracking-tighter mb-6 leading-[0.9]">
+                  Nuestra<br />
+                  <span className="text-brand-accent">Visión</span>
+                </h2>
+                <p className="text-xl md:text-2xl font-bold text-white/80 mb-8 max-w-sm leading-snug mx-auto md:mx-0">
+                  Solución digital enfocada en la captura de datos.
+                </p>
+                
+                <motion.div 
+                  whileHover={{ scale: 1.05 }}
+                  className="flex items-center gap-4 bg-brand-primary/10 border border-brand-primary/30 px-6 py-4 rounded-2xl shadow-[0_0_30px_rgba(20,184,166,0.15)] mx-auto md:mx-0"
+                >
+                  <WifiOff className="text-brand-accent w-8 h-8" />
+                  <div className="flex flex-col text-left">
+                    <span className="text-brand-accent font-black tracking-widest uppercase text-xl leading-none mb-1">Offline-First</span>
+                    <span className="text-white/50 text-[10px] uppercase tracking-wider font-bold">100% Operatividad</span>
+                  </div>
+                </motion.div>
+              </motion.div>
+
+              {/* Right Column: Staircase */}
+              <div className="w-full md:w-8/12 flex justify-start md:pl-10 lg:pl-16 overflow-x-hidden md:overflow-visible mt-10 md:mt-0">
+                <div className="flex flex-col md:flex-col-reverse gap-4 md:gap-5 w-full max-w-[280px] sm:max-w-[400px] md:max-w-full lg:max-w-[750px]">
+                  {[
+                    { id: 1, title: "Digitalizar...", desc: "Del papel a los bites", icon: FileDigit, styleClasses: "translate-x-0 md:translate-x-0 w-full md:w-full" },
+                    { id: 2, title: "Insights...", desc: "De datos a Información", icon: LineChart, styleClasses: "translate-x-[1rem] sm:translate-x-[2rem] md:translate-x-0 w-full md:w-[92%]" },
+                    { id: 3, title: "Agentes Virtuales", desc: "Enfoque y optimización potencIAdas", icon: Bot, styleClasses: "translate-x-[2rem] sm:translate-x-[4rem] md:translate-x-0 w-full md:w-[84%]" },
+                    { id: 4, title: "Capacidad Estructural", desc: "De conocimientos aislados a Skills Organizacionales", icon: Network, styleClasses: "translate-x-[3rem] sm:translate-x-[6rem] md:translate-x-0 w-full md:w-[76%]" },
+                    { id: 5, title: "Skills Engineering", desc: "Potenciar el negocio con la tecnología", icon: Cpu, styleClasses: "translate-x-[4rem] sm:translate-x-[8rem] md:translate-x-0 w-full md:w-[68%]" }
+                  ].map((step, i) => (
+                    <motion.div
+                      key={step.id}
+                      initial={{ opacity: 0, x: 40, y: 10 }}
+                      whileInView={{ opacity: 1, x: 0, y: 0 }}
+                      transition={{ delay: i * 0.15, duration: 0.6, type: "spring", stiffness: 100 }}
+                      viewport={{ once: true }}
+                      className={`group flex items-center gap-5 p-6 pr-8 rounded-[1.5rem] md:rounded-[2rem] bg-[#0c1610]/95 border border-brand-accent/20 hover:border-brand-accent/50 hover:bg-[#111e15] hover:shadow-[0_0_35px_rgba(170,189,78,0.1)] transition-all backdrop-blur-2xl relative overflow-hidden ${step.styleClasses}`}
+                    >
+                      {/* Number BG Watermark  */}
+                      <div className="absolute right-0 top-1/2 -translate-y-1/2 text-white/5 font-black text-[110px] leading-none pointer-events-none transition-transform group-hover:scale-105 duration-500 overflow-hidden pr-2">
+                        0{step.id}
+                      </div>
+
+                      {/* Icon */}
+                      <div className="w-16 h-16 shrink-0 rounded-full border border-brand-accent/30 flex items-center justify-center group-hover:border-brand-accent/80 group-hover:bg-brand-accent/10 transition-all duration-300 z-10 shadow-[inner_0_0_15px_rgba(170,189,78,0.15)]">
+                        <step.icon className="w-7 h-7 text-brand-accent group-hover:text-white transition-colors" />
+                      </div>
+                      
+                      {/* Texts */}
+                      <div className="flex-1 z-10">
+                        <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3 mb-1">
+                          <span className="text-brand-accent font-black text-[10px] md:text-sm uppercase tracking-widest whitespace-nowrap">PASO 0{step.id}</span>
+                          <h3 className="text-white font-bold text-xl md:text-2xl leading-none tracking-tight">{step.title}</h3>
+                        </div>
+                        <p className="text-white/60 font-medium text-sm md:text-base leading-snug">{step.desc}</p>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* ── SECTION 1: HERO VIDEO — PEPE ── */}
           <section className="relative w-full overflow-hidden bg-black" style={{ minHeight: "60vh" }}>
             <video
               ref={heroVideoRef}
@@ -182,26 +270,20 @@ export default function Shrimplicity() {
               animate={{ opacity: 1, scale: 1 }}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.95 }}
-              className="absolute top-5 left-5 z-20 flex items-center gap-2 bg-black/50 backdrop-blur-md border border-white/20 text-white px-4 py-2.5 rounded-full font-bold text-sm shadow-lg hover:bg-white/20 transition-all"
+              className="absolute top-5 left-5 z-20 flex items-center justify-center bg-black/50 backdrop-blur-md border border-white/20 text-white p-3 rounded-full shadow-lg hover:bg-white/20 transition-all"
               aria-label={isMuted ? "Activar sonido" : "Silenciar"}
             >
               {isMuted ? (
-                <>
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                      d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
-                  </svg>
-                  <span>Activar sonido</span>
-                </>
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                    d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
+                </svg>
               ) : (
-                <>
-                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
-                      d="M15.536 8.464a5 5 0 010 7.072M12 6v12m-3.536-9.536a5 5 0 000 7.072M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
-                  </svg>
-                  <span>Silenciar</span>
-                </>
+                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
+                    d="M15.536 8.464a5 5 0 010 7.072M12 6v12m-3.536-9.536a5 5 0 000 7.072M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+                </svg>
               )}
             </motion.button>
 
@@ -236,7 +318,7 @@ export default function Shrimplicity() {
               </span>
               <h1 className="text-5xl md:text-7xl font-black text-white tracking-tighter leading-none mb-4 drop-shadow-2xl">
                 Conoce a<br />
-                <span className="text-brand-accent">Atento Pepe</span>
+                <span className="text-brand-accent">Pepe</span>
               </h1>
               <p className="text-white/70 font-semibold text-lg md:text-xl max-w-xl mx-auto leading-relaxed">
                 El asistente de inteligencia artificial que transforma la gestión camaronera.
@@ -244,7 +326,7 @@ export default function Shrimplicity() {
             </motion.div>
           </section>
 
-          {/* ── SECTION 2: ATENTO PEPE — PRESENTACIÓN ── */}
+          {/* ── SECTION 2: PEPE — PRESENTACIÓN ── */}
           <section className="bg-brand-dark py-20 md:py-28 px-6">
             <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
               {/* Image */}
@@ -259,7 +341,7 @@ export default function Shrimplicity() {
                   <div className="absolute -inset-3 rounded-3xl bg-brand-accent/20 blur-xl" />
                   <img
                     src={imgAtentoPepe}
-                    alt="Atento Pepe"
+                    alt="Pepe"
                     className="relative w-64 h-64 md:w-80 md:h-80 object-cover rounded-3xl shadow-2xl border-4 border-brand-accent/30"
                   />
                   {/* Badge */}
@@ -281,11 +363,11 @@ export default function Shrimplicity() {
                   Asistente Inteligente
                 </span>
                 <h2 className="text-4xl md:text-5xl font-black tracking-tighter mb-6 leading-tight">
-                  Atento Pepe<br />
+                  Pepe<br />
                   <span className="text-brand-accent">Te acompaña siempre</span>
                 </h2>
                 <p className="text-white/70 font-medium text-lg leading-relaxed mb-8">
-                  Atento Pepe es el asistente de inteligencia artificial integrado en Shrimplicity. 
+                  Pepe es el asistente de inteligencia artificial integrado en Shrimplicity. 
                   Analiza tus datos en tiempo real, responde preguntas, sugiere acciones y anticipa 
                   problemas — todo desde la palma de tu mano.
                 </p>
@@ -316,12 +398,9 @@ export default function Shrimplicity() {
                 viewport={{ once: true }}
                 className="text-center mb-16"
               >
-                <span className="inline-block px-5 py-2.5 bg-brand-primary/10 text-brand-primary font-black text-[10px] tracking-[0.3em] uppercase rounded-full mb-6">
-                  Presencia Operacional
-                </span>
                 <h2 className="text-4xl md:text-6xl font-black text-brand-dark tracking-tighter leading-none">
-                  Shrimplicity en<br />
-                  <span className="text-brand-primary">Números Reales</span>
+                  Shrimplicity<br />
+                  <span className="text-brand-primary">en Cifras</span>
                 </h2>
                 <p className="mt-6 text-neutral-500 font-bold text-lg max-w-2xl mx-auto">
                   Datos que respaldan la confianza de los grupos camaroneros más importantes del Ecuador.
@@ -363,9 +442,6 @@ export default function Shrimplicity() {
                 viewport={{ once: true }}
                 className="text-center mb-12"
               >
-                <span className="inline-block px-5 py-2.5 bg-brand-accent/10 text-brand-accent font-black text-[10px] tracking-[0.3em] uppercase rounded-full mb-6 border border-brand-accent/20">
-                  Inteligencia de Datos
-                </span>
                 <h2 className="text-4xl md:text-5xl font-black text-white tracking-tighter leading-tight">
                   De Datos Crudos<br />
                   <span className="text-brand-accent">a Decisiones</span>
@@ -412,9 +488,6 @@ export default function Shrimplicity() {
                 viewport={{ once: true }}
                 className="text-center mb-16"
               >
-                <span className="inline-block px-5 py-2.5 bg-brand-primary/10 text-brand-primary font-black text-[10px] tracking-[0.3em] uppercase rounded-full mb-6">
-                  En Acción
-                </span>
                 <h2 className="text-4xl md:text-6xl font-black text-brand-dark tracking-tighter leading-none">
                   Shrimplicity<br />
                   <span className="text-brand-primary">en Movimiento</span>

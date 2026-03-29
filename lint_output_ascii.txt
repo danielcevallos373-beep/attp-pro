@@ -1,0 +1,54 @@
+
+C:\Users\msi\Documents\ATyTP\attp-pro\src\components\ui\hero-highlight.tsx
+  43:16  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\msi\Documents\ATyTP\attp-pro\src\components\ui\pdf-carousel.tsx
+  80:40  error  Unexpected any. Specify a different type  @typescript-eslint/no-explicit-any
+
+C:\Users\msi\Documents\ATyTP\attp-pro\src\components\ui\sidebar.tsx
+  16:14  error  Fast refresh only works when a file only exports components. Use a new file to share constants or functions between components  react-refresh/only-export-components
+
+C:\Users\msi\Documents\ATyTP\attp-pro\src\components\ui\text-generate-effect.tsx
+  36:6  warning  React Hook useEffect has missing dependencies: 'animate', 'duration', and 'filter'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+C:\Users\msi\Documents\ATyTP\attp-pro\src\components\ui\vortex.tsx
+    8:14  error    Unexpected any. Specify a different type                                                                                       @typescript-eslint/no-explicit-any
+   45:7   error    'center' is never reassigned. Use 'const' instead                                                                              prefer-const
+   47:9   error    'HALF_PI' is assigned a value but never used                                                                                   @typescript-eslint/no-unused-vars
+   49:9   error    'TO_RAD' is assigned a value but never used                                                                                    @typescript-eslint/no-unused-vars
+   53:9   error    'hm' is never reassigned. Use 'const' instead                                                                                  prefer-const
+   89:5   error    'x' is never reassigned. Use 'const' instead                                                                                   prefer-const
+   90:5   error    'y' is never reassigned. Use 'const' instead                                                                                   prefer-const
+   91:5   error    'vx' is never reassigned. Use 'const' instead                                                                                  prefer-const
+   92:5   error    'vy' is never reassigned. Use 'const' instead                                                                                  prefer-const
+   93:5   error    'life' is never reassigned. Use 'const' instead                                                                                prefer-const
+   94:5   error    'ttl' is never reassigned. Use 'const' instead                                                                                 prefer-const
+   95:5   error    'speed' is never reassigned. Use 'const' instead                                                                               prefer-const
+   96:5   error    'radius' is never reassigned. Use 'const' instead                                                                              prefer-const
+   97:5   error    'hue' is never reassigned. Use 'const' instead                                                                                 prefer-const
+  129:9   error    'i2' is never reassigned. Use 'const' instead                                                                                  prefer-const
+  130:7   error    'i3' is never reassigned. Use 'const' instead                                                                                  prefer-const
+  131:7   error    'i4' is never reassigned. Use 'const' instead                                                                                  prefer-const
+  132:7   error    'i5' is never reassigned. Use 'const' instead                                                                                  prefer-const
+  133:7   error    'i6' is never reassigned. Use 'const' instead                                                                                  prefer-const
+  134:7   error    'i7' is never reassigned. Use 'const' instead                                                                                  prefer-const
+  135:7   error    'i8' is never reassigned. Use 'const' instead                                                                                  prefer-const
+  136:7   error    'i9' is never reassigned. Use 'const' instead                                                                                  prefer-const
+  139:5   error    'x' is never reassigned. Use 'const' instead                                                                                   prefer-const
+  140:5   error    'y' is never reassigned. Use 'const' instead                                                                                   prefer-const
+  141:5   error    'n' is never reassigned. Use 'const' instead                                                                                   prefer-const
+  142:5   error    'vx' is never reassigned. Use 'const' instead                                                                                  prefer-const
+  143:5   error    'vy' is never reassigned. Use 'const' instead                                                                                  prefer-const
+  145:5   error    'ttl' is never reassigned. Use 'const' instead                                                                                 prefer-const
+  146:5   error    'speed' is never reassigned. Use 'const' instead                                                                               prefer-const
+  147:5   error    'x2' is never reassigned. Use 'const' instead                                                                                  prefer-const
+  148:5   error    'y2' is never reassigned. Use 'const' instead                                                                                  prefer-const
+  149:5   error    'radius' is never reassigned. Use 'const' instead                                                                              prefer-const
+  150:5   error    'hue' is never reassigned. Use 'const' instead                                                                                 prefer-const
+  162:5   error    Expected an assignment or function call and instead saw an expression                                                          @typescript-eslint/no-unused-expressions
+  194:5   error    'ctx' is defined but never used                                                                                                @typescript-eslint/no-unused-vars
+  250:6   warning  React Hook useEffect has missing dependencies: 'handleResize' and 'setup'. Either include them or remove the dependency array  react-hooks/exhaustive-deps
+
+??? 40 problems (38 errors, 2 warnings)
+  3 errors and 0 warnings potentially fixable with the `--fix` option.
+

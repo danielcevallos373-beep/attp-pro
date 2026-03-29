@@ -7,19 +7,12 @@ import { PdfCarousel } from "../../components/ui/pdf-carousel";
 
 // Asset imports from imagesCapPDF
 import AnalisisCosechas from "../../assets/imagesCapPDF/AnalisisCosechas.png";
-import ComparacionModelosNoLineales from "../../assets/imagesCapPDF/ComparacionModelosNoLineales.png";
 import DistanciaCook from "../../assets/imagesCapPDF/DistanciaDeCook.png";
 import Filtrado1 from "../../assets/imagesCapPDF/Filtrado1.png";
 import Filtrado2 from "../../assets/imagesCapPDF/Filtrado2.png";
 import RegistrosDiarios from "../../assets/imagesCapPDF/RegistrosDiarios.png";
-import SFRModelo from "../../assets/imagesCapPDF/SFRModeloObtenido.png";
-import SGRModelo from "../../assets/imagesCapPDF/SGRModeloObtenido.png";
-import TablaModelo from "../../assets/imagesCapPDF/TablaModeloObtenido.png";
 import SfrIndex from "../../assets/imagesCapPDF/sfrIndexConsolidado.png";
 
-// Asset imports from imagesCapacitaciones2
-import ComparacionSFR_IC from "../../assets/imagesCapacitaciones2/Comparación Modelos SFR - IC 95.jpeg";
-import ComparacionSFR from "../../assets/imagesCapacitaciones2/Comparación Modelos SFR.jpeg";
 import ModeloSFR_PDF from "../../assets/imagesCapacitaciones2/Modelo SFR.SGR.FCRe HS.pdf";
 
 export default function Capacitaciones() {
@@ -149,121 +142,7 @@ export default function Capacitaciones() {
               </div>
             </section>
 
-            {/* 3. SECCIÓN: AJUSTE DE MODELOS Y REGRESIÓN */}
-            <section>
-              <div className="flex items-center gap-4 mb-8">
-                <div className="w-12 h-12 bg-indigo-100 rounded-2xl flex items-center justify-center text-indigo-600 font-bold text-xl">03</div>
-                <h2 className="text-3xl font-bold text-brand-dark tracking-tight">Modelado de Regresión</h2>
-              </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {[
-                  { src: ComparacionModelosNoLineales, title: "Selección de Modelo", math: "R² comparativo", desc: "Potencial vs Exponencial" },
-                  { src: ComparacionSFR, title: "Ajuste de Curvas SFR", math: "Ajuste SFR", desc: "Curva de tendencia obtenida" },
-                  { src: ComparacionSFR_IC, title: "Intervalos de Confianza", math: "SFR (IC 95%)", desc: "Área de probabilidad" }
-                ].map((img, i) => (
-                  <motion.div 
-                    key={i}
-                    whileHover={{ scale: 1.02 }}
-                    className="group cursor-pointer bg-white p-6 rounded-3xl border border-neutral-200 shadow-sm hover:border-brand-primary/50 transition-all text-center"
-                    onClick={() => setSelectedImg(img)}
-                  >
-                    <div className="aspect-square bg-slate-50 rounded-2xl overflow-hidden mb-6 border border-neutral-100">
-                      <img src={img.src} alt={img.title} className="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform" />
-                    </div>
-                    <h5 className="text-lg font-bold text-brand-dark mb-2 tracking-tight">{img.title}</h5>
-                    <p className="text-xs text-neutral-400 font-medium mb-4">{img.desc}</p>
-                    <span className="inline-block px-4 py-1.5 bg-brand-primary/10 text-brand-primary text-[10px] font-black uppercase tracking-[0.2em] rounded-full">
-                      {img.math}
-                    </span>
-                  </motion.div>
-                ))}
-              </div>
-            </section>
-
-            {/* 4. SECCIÓN: RESULTADOS FINALES Y MODELO MAESTRO */}
-            <section>
-              <div className="flex items-center gap-4 mb-8">
-                <div className="w-12 h-12 bg-brand-primary/10 rounded-2xl flex items-center justify-center text-brand-primary font-bold text-xl">04</div>
-                <h2 className="text-3xl font-bold text-brand-dark tracking-tight">Resultados Finales</h2>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-12 gap-6">
-                
-                {/* Final Curves (Dominant) */}
-                <div className="xl:col-span-7 grid grid-cols-1 lg:grid-cols-2 gap-6">
-                  {/* SFR Results */}
-                  <div 
-                    className="bg-white p-5 rounded-3xl border border-neutral-200 shadow-sm cursor-pointer group hover:border-brand-primary/40 transition-all flex flex-col"
-                    onClick={() => setSelectedImg({ src: SFRModelo, title: "Curva de Regresión SFR Final" })}
-                  >
-                    <div className="flex justify-between items-center mb-4">
-                      <h5 className="font-bold text-brand-dark uppercase text-[9px] tracking-widest">Regresión SFR</h5>
-                      <span className="text-brand-primary font-mono text-[9px] font-black">R² = 0.77</span>
-                    </div>
-                    <div className="flex-1 aspect-video bg-brand-light/20 rounded-xl overflow-hidden mb-4 p-2">
-                      <img src={SFRModelo} alt="Curva SFR" className="w-full h-full object-contain" />
-                    </div>
-                    <div className="bg-brand-dark text-white p-2 rounded-lg text-center font-mono text-xs font-bold">
-                      y = 0.1688x<sup>-0.554</sup>
-                    </div>
-                  </div>
-
-                  {/* SGR Results */}
-                  <div 
-                    className="bg-white p-5 rounded-3xl border border-neutral-200 shadow-sm cursor-pointer group hover:border-brand-primary/40 transition-all flex flex-col"
-                    onClick={() => setSelectedImg({ src: SGRModelo, title: "Curva de Regresión SGR Final" })}
-                  >
-                    <div className="flex justify-between items-center mb-4">
-                      <h5 className="font-bold text-brand-dark uppercase text-[9px] tracking-widest">Regresión SGR</h5>
-                      <span className="text-brand-primary font-mono text-[9px] font-black">R² = 0.57</span>
-                    </div>
-                    <div className="flex-1 aspect-video bg-brand-light/20 rounded-xl overflow-hidden mb-4 p-2">
-                      <img src={SGRModelo} alt="Curva SGR" className="w-full h-full object-contain" />
-                    </div>
-                    <div className="bg-brand-dark text-white p-2 rounded-lg text-center font-mono text-xs font-bold">
-                      y = 0.3839x<sup>-0.952</sup>
-                    </div>
-                  </div>
-                </div>
-
-                {/* COMPACT MASTER TABLE */}
-                <div className="xl:col-span-3">
-                  <div className="bg-white p-6 rounded-3xl border border-neutral-200 shadow-lg h-full flex flex-col relative group overflow-hidden">
-                    <h3 className="text-sm font-black text-brand-dark mb-4 leading-tight tracking-tight uppercase border-b border-neutral-100 pb-2">
-                      Tabla Maestro <span className="text-brand-primary">SFR/SGR</span>
-                    </h3>
-                    
-                    <div 
-                      className="flex-1 bg-slate-100 rounded-xl overflow-hidden cursor-zoom-in relative group/table border border-neutral-100"
-                      onClick={() => setSelectedImg({ src: TablaModelo, title: "Tabla Maestro SFR/SGR" })}
-                    >
-                      <img src={TablaModelo} alt="Tabla Maestra" className="w-full h-full object-cover group-hover/table:scale-110 transition-transform duration-700" />
-                      <div className="absolute inset-0 bg-brand-dark/10 opacity-0 group-hover/table:opacity-100 transition-opacity flex items-center justify-center">
-                        <div className="bg-white px-4 py-2 rounded-full shadow-lg text-[10px] font-black flex items-center gap-2">
-                           ABRIR 🔍
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* COMPACT INFO */}
-                <div className="xl:col-span-2">
-                  <div className="bg-brand-primary/5 p-5 rounded-3xl border border-brand-primary/10 h-full flex flex-col justify-center gap-6">
-                    <div>
-                      <p className="text-[9px] font-black text-brand-primary uppercase tracking-widest mb-1 font-mono">Aplicabilidad</p>
-                      <p className="text-xs font-bold text-neutral-600">Pesos 1g a 40g</p>
-                    </div>
-                    <div>
-                      <p className="text-[9px] font-black text-brand-primary uppercase tracking-widest mb-1 font-mono">Margen Field</p>
-                      <p className="text-xs font-bold text-neutral-600">± 5% Semanal</p>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            </section>
 
             {/* ACTION FOOTER */}
             <div className="mt-8 bg-brand-dark p-10 md:p-14 rounded-[3rem] shadow-2xl flex flex-col items-center gap-6 border border-white/10 relative overflow-hidden group">
@@ -365,9 +244,6 @@ export default function Capacitaciones() {
             animate={{ opacity: 1, scale: 1 }}
             className="mb-24 text-center"
           >
-            <span className="inline-block px-5 py-2.5 bg-brand-primary/10 text-brand-primary font-black text-[10px] tracking-[0.3em] uppercase rounded-full mb-8">
-               Intelligence Center & Optimization
-            </span>
             <h1 className="text-6xl md:text-8xl font-black text-brand-dark tracking-tighter mb-8 leading-none">
               Capacitaciones <br className="hidden md:block"/>
               <span className="text-brand-primary">Especializadas</span>

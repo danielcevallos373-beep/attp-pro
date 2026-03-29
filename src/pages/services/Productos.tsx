@@ -174,15 +174,12 @@ export default function Productos() {
             animate={{ opacity: 1, scale: 1 }}
             className="mb-16 md:mb-24 text-center"
           >
-            <span className="inline-block px-5 py-2.5 bg-brand-primary/10 text-brand-primary font-black text-[10px] tracking-[0.3em] uppercase rounded-full mb-8">
-               Bioremediation & Treatments
-            </span>
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-brand-dark tracking-tighter mb-8 leading-none">
               Productos <br className="hidden md:block"/>
               <span className="text-brand-primary">Biológicos</span>
             </h1>
             <p className="max-w-3xl mx-auto text-neutral-500 font-bold text-lg md:text-xl leading-relaxed opacity-80 px-4">
-              Catálogo visual de nuestros tratamientos especializados de alto impacto para la recuperación de suelos y control biológico del agua en la acuacultura.
+              Conoce nuestro trabajo y socios estratégicos en lo referente a recuperación de suelos acuícolas, agrícolas y tratamientos de agua residuales
             </p>
           </motion.div>
           
