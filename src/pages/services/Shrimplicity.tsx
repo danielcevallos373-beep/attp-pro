@@ -1,7 +1,8 @@
 import { AppSidebar } from "../../components/AppSidebar";
 import Navbar from "../../components/Navbar";
 import { useState, useEffect, useRef } from "react";
-import { motion } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
+import RegistroDemo from "../../components/RegistroDemo";
 
 // Assets
 import logoShrimp from "../../assets/images/LogoShrimplicitySinFondo.png";
@@ -12,7 +13,7 @@ import videoLanzamiento from "../../assets/7. SHRIMPLICITY/Lanzamiento Shrimplic
 import videoNuevaFuncionalidad from "../../assets/7. SHRIMPLICITY/Nueva Funcionalidad.mp4";
 import videoSuperado from "../../assets/7. SHRIMPLICITY/Superado las 1,000 ha.mp4";
 import imgPanoramica from "../../assets/images/PanorámicaCamaronera.jpg";
-import { FileDigit, LineChart, Bot, Network, Cpu, WifiOff } from "lucide-react";
+import { FileDigit, LineChart, Bot, Network, Cpu, WifiOff, X } from "lucide-react";
 
 // ------- Animated Counter Hook -------
 function useCountUp(target: number, duration = 1800, start = false) {
@@ -104,6 +105,7 @@ export default function Shrimplicity() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [statsVisible, setStatsVisible] = useState(false);
   const [isMuted, setIsMuted] = useState(true);
+  const [showDemoModal, setShowDemoModal] = useState(false);
   const statsRef = useRef<HTMLDivElement>(null);
   const heroVideoRef = useRef<HTMLVideoElement>(null);
 
@@ -523,6 +525,7 @@ export default function Shrimplicity() {
                 Más de 1,500 ha gestionadas. Únete a los grupos camaroneros que ya confían en Shrimplicity para tomar mejores decisiones.
               </p>
               <motion.button
+                onClick={() => setShowDemoModal(true)}
                 whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(57,119,87,0.4)" }}
                 whileTap={{ scale: 0.97 }}
                 className="px-10 py-5 bg-brand-primary text-white text-lg font-bold rounded-full shadow-lg transition-all"
@@ -533,6 +536,37 @@ export default function Shrimplicity() {
           </section>
 
         </main>
+
+        <AnimatePresence>
+          {showDemoModal && (
+            <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+              <motion.div 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="absolute inset-0 bg-black/80 backdrop-blur-sm"
+                onClick={() => setShowDemoModal(false)}
+              />
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                className="relative z-10 w-full max-w-md"
+              >
+                <div className="absolute top-4 right-4 z-50">
+                  <button 
+                    onClick={() => setShowDemoModal(false)}
+                    className="p-2 text-white/50 hover:text-white bg-white/5 hover:bg-white/10 rounded-full transition-all border border-white/10 shadow-lg"
+                  >
+                    <X className="w-5 h-5" />
+                  </button>
+                </div>
+                <RegistroDemo />
+              </motion.div>
+            </div>
+          )}
+        </AnimatePresence>
+
       </div>
     </div>
   );
